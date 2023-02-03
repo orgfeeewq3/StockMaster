@@ -5,6 +5,9 @@ public class Venta {
     private String nombre;
     private int cantidad;
 
+    public Venta() {
+    }
+
     public Venta(int id, String nombre, int cantidad) {
         this.id = id;
         this.nombre = nombre;

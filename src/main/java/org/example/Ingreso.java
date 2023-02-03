@@ -5,6 +5,15 @@ public class Ingreso {
     private String nombre;
     private int cantidad;
 
+    public Ingreso() {
+    }
+
+    public Ingreso(String nombre, int cantidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -21,8 +30,5 @@ public class Ingreso {
         this.cantidad = cantidad;
     }
 
-    public Ingreso(String nombre, int cantidad) {
-        this.nombre = nombre;
-        this.cantidad = cantidad;
-    }
+
 }
