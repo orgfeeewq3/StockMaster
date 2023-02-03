@@ -13,9 +13,11 @@ public class ProductoController {
     }
 
     public void abastecerProducto(String nombre, int cantidad){
+        ingreso.setNombre(nombre);
+        ingreso.setCantidad(cantidad);
         for (Almacen value : listaAlmacen)
-            if (value.getNombre().equals(nombre))
-                value.setCantidad(value.getCantidad() + cantidad);
+            if (value.getNombre().equals(ingreso.getNombre()))
+                value.setCantidad(value.getCantidad() + ingreso.getCantidad());
     }
 
     public void venderProducto(String nombre, int cantidad){
