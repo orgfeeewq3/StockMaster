@@ -8,8 +8,7 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int id, String nombre, int cantidad) {
-        this.id = id;
+    public Venta( String nombre, int cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }

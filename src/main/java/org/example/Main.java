@@ -2,6 +2,20 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
+//        mostrarMenu();
+        prodControl();
+    }
+
+//    public static void mostrarMenu(){
+//        System.out.println("1. Crear producto");
+//        System.out.println("2. Abastecer producto");
+//        System.out.println("3. Vender producto");
+//        System.out.println("4. Mostrar productos");
+//        System.out.println("5. Mostrar ingresos");
+//        System.out.println("6. Mostrar ventas");
+//        System.out.println("7. Salir");
+//    }
+    public static void prodControl(){
         ProductoController productoController = new ProductoController();
 
         System.out.println("Bienvenido al sistema de almacen");
@@ -25,5 +39,7 @@ public class Main {
         productoController.abastecerProducto("Fanta", 7);
 
         productoController.mostrarProductos();
+        productoController.mostrarVentas();
+        productoController.mostrarIngresos();
     }
 }
