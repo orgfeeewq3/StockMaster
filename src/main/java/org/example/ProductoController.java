@@ -68,9 +68,11 @@ public class ProductoController {
 
 
 
-//    public void sacarProducto(String nombre, int cantidad){
-//        almacen.setNombre(nombre);
-//        almacen.setCantidad(cantidad);
-//        listaAlmacen.remove(almacen);
-//    }
+    public void destruirProducto(String nombre){
+        for (int i = 0; i < listaAlmacen.size(); i++) {
+            if (listaAlmacen.get(i).getNombre().equals(nombre)) {
+                listaAlmacen.remove(i);
+            }
+        }
+    }
 }

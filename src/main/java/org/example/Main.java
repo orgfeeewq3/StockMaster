@@ -41,5 +41,8 @@ public class Main {
         productoController.mostrarProductos();
         productoController.mostrarVentas();
         productoController.mostrarIngresos();
+
+        productoController.destruirProducto("Pepsi");
+        productoController.mostrarProductos();
     }
 }
