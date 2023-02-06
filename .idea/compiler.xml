@@ -6,7 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
         <module name="proyecto1" />
+=======
+        <module name="StockMaster" />
+>>>>>>> bf93fb8f5e6b28c76db93781fac2a1d113da96b7
       </profile>
     </annotationProcessing>
   </component>
