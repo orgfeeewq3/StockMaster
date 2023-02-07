@@ -39,9 +39,9 @@ public class UsuariosController {
 
     public void login(String usuario, String contrasena) {
         for (Usuario u : listaUsuarios) {
-            System.out.println("hoooola"+u.getUsuario());
-            System.out.println("yeahhh"+usuario+contrasena);
-            if (u.getUsuario() == usuario) {
+            System.out.println("hoooola: "+u.getUsuario());
+            System.out.println("yeahhh"+usuario+"f"+contrasena);
+            if (u.getUsuario().equals(usuario) && u.getContrasena().equals(contrasena)) {
                 System.out.println("Bienvenido " + u.getNombre());
 
                 prodControl();
@@ -56,58 +56,56 @@ public class UsuariosController {
     public static void prodControl(){
         Scanner scan = new Scanner(System.in);
         ProductoController productoController = new ProductoController();
+        int opcion = 0;
         String nombre;
         int cantidad;
-        System.out.println("Bienvenido al sistema de almacen");
-        System.out.println("1. Crear producto");
-        System.out.println("2. Abastecer producto");
-        System.out.println("3. Vender producto");
-        System.out.println("4. Mostrar productos");
-        System.out.println("5. Mostrar ingresos");
-        System.out.println("6. Mostrar ventas");
-        System.out.println("7. Salir");
-        int opcion = 0;
-        switch(opcion){
-            case 1:
-                System.out.println("Creando producto");
-                System.out.println("Ingrese el nombre del producto");
-                nombre = scan.nextLine();
-                System.out.println("Ingrese cantidad de producto");
-                cantidad = scan.nextInt();
-                productoController.crearProducto(nombre, cantidad);
-                break;
-            case 2:
-                System.out.println("Abasteciendo producto");
-                System.out.println("Ingrese el nombre del producto");
-                nombre = scan.nextLine();
-                System.out.println("Ingrese cantidad de producto");
-                cantidad = scan.nextInt();
-                productoController.abastecerProducto(nombre, cantidad);
-                break;
-            case 3:
-                System.out.println("Vendiendo producto");
-                System.out.println("Ingrese el nombre del producto");
-                nombre = scan.nextLine();
-                System.out.println("Ingrese cantidad de producto");
-                cantidad = scan.nextInt();
-                productoController.venderProducto(nombre, cantidad);
-                break;
-            case 4:
-                productoController.mostrarProductos();
-                break;
-            case 5:
-                productoController.mostrarIngresos();
-                break;
-            case 6:
-                productoController.mostrarVentas();
-                break;
-            case 7:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Opcion no valida");
-                break;
-        }
+        while(true) {
+            System.out.println("Bienvenido al sistema de almacen");
+            System.out.println("1. Crear producto");
+            System.out.println("2. Abastecer producto");
+            System.out.println("3. Vender producto");
+            System.out.println("4. Mostrar productos");
+            System.out.println("5. Mostrar ingresos");
+            System.out.println("6. Mostrar ventas");
+            System.out.println("7. Salir");
+            opcion = scan.nextInt();
+            switch (opcion) {
+                case 1 -> {
+                    scan.nextLine();
+                    System.out.println("Creando producto");
+                    System.out.println("Ingrese el nombre del producto");
+                    nombre = scan.nextLine();
+                    System.out.println("Ingrese cantidad de producto");
+                    cantidad = scan.nextInt();
+                    productoController.crearProducto(nombre, cantidad);
+                }
+                case 2 -> {
+                    scan.nextLine();
+                    System.out.println("Abasteciendo producto");
+                    System.out.println("Ingrese el nombre del producto");
+                    nombre = scan.nextLine();
+                    System.out.println("Ingrese cantidad de producto");
+                    cantidad = scan.nextInt();
+                    productoController.abastecerProducto(nombre, cantidad);
+                }
+                case 3 -> {
+                    System.out.println("Vendiendo producto");
+                    System.out.println("Ingrese el nombre del producto");
+                    nombre = scan.nextLine();
+                    System.out.println("Ingrese cantidad de producto");
+                    cantidad = scan.nextInt();
+                    productoController.venderProducto(nombre, cantidad);
+                }
+                case 4 -> productoController.mostrarProductos();
+                case 5 -> productoController.mostrarIngresos();
+                case 6 -> productoController.mostrarVentas();
+                case 7 -> {
+                    System.out.println("Saliendo del sistema");
+                    return;
+                }
 
+                default -> System.out.println("Opcion no valida");
+            }
+        }
     }
 }

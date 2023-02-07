@@ -22,10 +22,10 @@ public class Main {
 
             switch (opcion) {
                 case 1 -> {
+                    scan.nextLine();
                     System.out.println("Registrando usuario");
                     System.out.println("Ingrese su nombre");
                     nombre = scan.nextLine();
-                    scan.nextLine();
                     System.out.println("Ingrese su correo");
                     correo = scan.nextLine();
                     System.out.println("Ingrese su usuario");
@@ -35,11 +35,11 @@ public class Main {
                     usuariosController.register(nombre, correo, usuario, contrasena);
                 }
                 case 2 -> {
+                    scan.nextLine();
                     System.out.println("Iniciando sesion");
                     System.out.println("Ingrese su usuario");
                     usuario = scan.nextLine();
-                    scan.nextLine();
-                    System.out.println("Ingrese su contraseña");
+                    System.out.println(usuario+" Ingrese su contraseña");
                     contrasena = scan.nextLine();
                     System.out.println(contrasena);
                     usuariosController.login(usuario, contrasena);
