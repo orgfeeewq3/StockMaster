@@ -41,7 +41,6 @@ public class Main {
                     usuario = scan.nextLine();
                     System.out.println(usuario+" Ingrese su contraseña");
                     contrasena = scan.nextLine();
-                    System.out.println(contrasena);
                     usuariosController.login(usuario, contrasena);
                 }
                 //iniciarSesion();
