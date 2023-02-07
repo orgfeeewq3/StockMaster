@@ -1,48 +1,54 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
-//        mostrarMenu();
-        prodControl();
+        String nombre;
+        String correo;
+        String usuario = "";
+        String contrasena = "";
+        int opcion = 0;
+        Scanner scan = new Scanner(System.in);
+
+        UsuariosController usuariosController = new UsuariosController();
+
+    while (true) {
+            System.out.println("1. Registrase");
+            System.out.println("2. Iniciar sesion");
+            System.out.println("3. Salir");
+            opcion = scan.nextInt();
+
+            switch (opcion) {
+                case 1 -> {
+                    scan.nextLine();
+                    System.out.println("Registrando usuario");
+                    System.out.println("Ingrese su nombre");
+                    nombre = scan.nextLine();
+                    System.out.println("Ingrese su correo");
+                    correo = scan.nextLine();
+                    System.out.println("Ingrese su usuario");
+                    usuario = scan.nextLine();
+                    System.out.println("Ingrese su contraseña");
+                    contrasena = scan.nextLine();
+                    usuariosController.register(nombre, correo, usuario, contrasena);
+                }
+                case 2 -> {
+                    scan.nextLine();
+                    System.out.println("Iniciando sesion");
+                    System.out.println("Ingrese su usuario");
+                    usuario = scan.nextLine();
+                    System.out.println(usuario+" Ingrese su contraseña");
+                    contrasena = scan.nextLine();
+                    System.out.println(contrasena);
+                    usuariosController.login(usuario, contrasena);
+                }
+                //iniciarSesion();
+                case 3 -> System.exit(0);
+                default -> System.out.println("Opcion no valida");
+            }}
+
     }
 
-//    public static void mostrarMenu(){
-//        System.out.println("1. Crear producto");
-//        System.out.println("2. Abastecer producto");
-//        System.out.println("3. Vender producto");
-//        System.out.println("4. Mostrar productos");
-//        System.out.println("5. Mostrar ingresos");
-//        System.out.println("6. Mostrar ventas");
-//        System.out.println("7. Salir");
-//    }
-    public static void prodControl(){
-        ProductoController productoController = new ProductoController();
-
-        System.out.println("Bienvenido al sistema de almacen");
-        System.out.println("\n1. Crear producto");
-        productoController.crearProducto("Coca Cola", 10);
-        productoController.crearProducto("Pepsi", 10);
-        productoController.crearProducto("Fanta", 10);
-
-        productoController.mostrarProductos();
-
-        System.out.println("\n2. Vender producto");
-        productoController.venderProducto("Coca Cola", 5);
-        productoController.venderProducto("Pepsi", 3);
-        productoController.venderProducto("Fanta", 7);
-
-        productoController.mostrarProductos();
-
-        System.out.println("\n3. Abastecer producto");
-        productoController.abastecerProducto("Coca Cola", 5);
-        productoController.abastecerProducto("Pepsi", 3);
-        productoController.abastecerProducto("Fanta", 7);
-
-        productoController.mostrarProductos();
-        productoController.mostrarVentas();
-        productoController.mostrarIngresos();
-
-        productoController.destruirProducto("Pepsi");
-        productoController.mostrarProductos();
-    }
 }
