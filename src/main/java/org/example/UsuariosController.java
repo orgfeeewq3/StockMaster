@@ -39,8 +39,6 @@ public class UsuariosController {
 
     public void login(String usuario, String contrasena) {
         for (Usuario u : listaUsuarios) {
-            System.out.println("hoooola: "+u.getUsuario());
-            System.out.println("yeahhh"+usuario+"f"+contrasena);
             if (u.getUsuario().equals(usuario) && u.getContrasena().equals(contrasena)) {
                 System.out.println("Bienvenido " + u.getNombre());
 
@@ -89,6 +87,7 @@ public class UsuariosController {
                     productoController.abastecerProducto(nombre, cantidad);
                 }
                 case 3 -> {
+                    scan.nextLine();
                     System.out.println("Vendiendo producto");
                     System.out.println("Ingrese el nombre del producto");
                     nombre = scan.nextLine();
