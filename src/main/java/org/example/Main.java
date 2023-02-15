@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+import lombok.val;
 
 public class Main {
 

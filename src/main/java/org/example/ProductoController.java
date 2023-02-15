@@ -1,5 +1,6 @@
 package org.example;
 import java.util.ArrayList;
+import lombok.val;
 
 public class ProductoController {
     Almacen almacen = new Almacen();

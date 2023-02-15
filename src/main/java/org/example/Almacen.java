@@ -1,10 +1,15 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
 public class Almacen {
     int id;
     String nombre;
     int cantidad;
-
+//    @Data
+//    @AllArgsConstructor
     public Almacen() {
     }
 
