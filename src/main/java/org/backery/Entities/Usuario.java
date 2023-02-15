@@ -1,4 +1,4 @@
-package org.example;
+package org.backery.Entities;
 
 public class Usuario {
     int id;

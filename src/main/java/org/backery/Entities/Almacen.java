@@ -1,15 +1,14 @@
-package org.example;
+package org.backery.Entities;
 
-public class Ingreso {
-    private int id;
-    private String nombre;
-    private int cantidad;
+public class Almacen {
+    int id;
+    String nombre;
+    int cantidad;
 
-    public Ingreso() {
+    public Almacen() {
     }
 
-    public Ingreso(String nombre, int cantidad) {
-        this.id = id;
+    public Almacen(String nombre, int cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }
@@ -29,6 +28,4 @@ public class Ingreso {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-
 }

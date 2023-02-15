@@ -1,15 +1,19 @@
-package org.example;
+package org.backery.Controllers;
+
+import org.backery.Entities.Usuario;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 //import static org.example.Main.prodControl;
-
+@RestController
 public class UsuariosController {
     Usuario usuario = new Usuario();
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     public Usuarios usuarios = new Usuarios();
-    public void dispatch_revisar() {
+    /*public void dispatch_revisar() {
         boolean revisar_usuario = usuarios.list_usuario.contains(usuarios.usuario), revisar_contra = usuarios.list_contrasena.contains(usuarios.contraseña);
 
         if (revisar_usuario & revisar_contra) {
@@ -21,6 +25,14 @@ public class UsuariosController {
         } else {
             System.out.println("El usuario o contraseña estan incorrectos, o no existen");
         }
+    }*/
+    @GetMapping(value = "/wellcome") //ruta http://localhost:9090/wellcome
+    public Usuario sayHello(){
+        usuario.setNombre("moises");
+        usuario.setUsuario("alx7770i535");
+        usuario.setCorreo("alx7770i535@gamil.com");
+        usuario.setContrasena("1234abc");
+        return usuario;
     }
     public void dispatch_login() {
         usuarios.login();
