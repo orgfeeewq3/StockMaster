@@ -1,4 +1,8 @@
-package org.example;
+package org.backery.Controllers;
+import org.backery.Entities.Almacen;
+import org.backery.Entities.Ingreso;
+import org.backery.Entities.Venta;
+
 import java.util.ArrayList;
 
 public class ProductoController {
