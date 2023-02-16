@@ -28,10 +28,12 @@ public class UsuariosController {
     }*/
     @GetMapping(value = "/wellcome") //ruta http://localhost:9090/wellcome
     public Usuario sayHello(){
+
         usuario.setNombre("moises");
         usuario.setUsuario("alx7770i535");
         usuario.setCorreo("alx7770i535@gamil.com");
         usuario.setContrasena("1234abc");
+//        return "hello world!";
         return usuario;
     }
     public void dispatch_login() {
