@@ -5,6 +5,7 @@ import org.backery.Model.Entities.Usuario;
 import java.util.List;
 
 public interface UserService {
+    Boolean existsByUsername(String username);
 
     Usuario findOneByUsername(String username);
 

@@ -9,11 +9,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
-//    @Autowired
+    @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public Boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
     @Override
     public Usuario findOneByUsername(String username) {
-        return null;
+        return userRepository.findOneByUsernameOrEmail(username, username);
     }
 
     @Override
@@ -31,8 +37,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Usuario findOneByIdentifer(String identifier) throws Exception {
+        System.out.println("identifier: " + identifier);
+
         Usuario foundUser = userRepository
                 .findOneByUsernameOrEmail(identifier, identifier);
+
+        System.out.println("foundUser: " + foundUser);
         return foundUser;
     }
 

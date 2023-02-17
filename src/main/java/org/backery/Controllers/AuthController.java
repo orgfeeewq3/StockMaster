@@ -5,16 +5,20 @@ import org.backery.Model.Entities.Usuario;
 import org.backery.Model.dtos.MessageDTO;
 import org.backery.Model.dtos.LoginDTO;
 import org.backery.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/auth")
 public class AuthController {   //TODO: la ruta es en request mapping y no en rest controller
-//    @Autowired
+    @Autowired
     UserService userService;
 //
 //    @Autowired
@@ -61,34 +65,34 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
     } */
 
     @PostMapping(value="/signin")
-    private ResponseEntity<MessageDTO> login( LoginDTO loginInfo) {
+    private ResponseEntity<MessageDTO> login(@Valid LoginDTO loginInfo, BindingResult result, Model model) {
         try {
-
-//            if(result.hasErrors()) {
-//                return new ResponseEntity<>(
-//                        new TokenDTO(),
-//                        HttpStatus.BAD_REQUEST
-//                );
-//            }
-
-            Usuario user = userService.findOneByIdentifer(loginInfo.getIdentifier());
-
-            if(!userService.comparePassword(user, loginInfo.getPassword())) {
-                return new ResponseEntity<>(
-                        new MessageDTO("Hay errores: " ),
-                        HttpStatus.BAD_REQUEST
-                );
+            System.out.println("result: " + result);
+            if(result.hasErrors()) {
+                throw new Exception("Hay errores en el formulario");
+            }
+            if (loginInfo.getIdentifier() == null || loginInfo.getPassword() == null) {
+                throw new Exception("No se puede dejar vacio el usuario o la contrasena");
+            }
+            if(!userService.existsByUsername(loginInfo.getIdentifier())) { //Se verifica que el usuario exista
+                throw new Exception("Este usuario no existe");
             }
 
-            return new ResponseEntity<>(
+            Usuario user = userService.findOneByIdentifer(loginInfo.getIdentifier()); //Se obtiene el usuario
+
+            if(!userService.comparePassword(user, loginInfo.getPassword())) { //Se compara la contraseña
+                throw new Exception("La contrasena no es correcta.");
+            }
+
+            return new ResponseEntity<>(    //Sii todo esta bien, se retorna ok
                     new MessageDTO("Bienvenido"),
                     HttpStatus.OK
             );
 
-        } catch (Exception e) {
+        } catch (Exception e) { //Si hay un error extrano, se retorna un error interno
             System.out.println(e.getMessage());
             return new ResponseEntity<>(
-                    new MessageDTO("Error interno :("),
+                    new MessageDTO(e.getMessage()),
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }

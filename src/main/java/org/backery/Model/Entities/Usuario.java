@@ -1,10 +1,12 @@
 package org.backery.Model.Entities;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.Setter;
 
 @Data
 @Setter
+@Getter
 public class Usuario {
     int id;
     String nombre;
@@ -28,6 +30,14 @@ public class Usuario {
         this.correo = correo;
         this.usuario = usuario;
         this.contrasena = contrasena;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
