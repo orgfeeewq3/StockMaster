@@ -1,24 +1,17 @@
-package org.backery.Entities;
+package org.backery.Model.Entities;
 
-public class Venta {
+public class Ingreso {
     private int id;
     private String nombre;
     private int cantidad;
 
-    public Venta() {
+    public Ingreso() {
     }
 
-    public Venta( String nombre, int cantidad) {
+    public Ingreso(String nombre, int cantidad) {
+        this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
@@ -36,4 +29,6 @@ public class Venta {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+
 }

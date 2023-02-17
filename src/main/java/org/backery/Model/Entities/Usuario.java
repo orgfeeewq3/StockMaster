@@ -1,5 +1,10 @@
-package org.backery.Entities;
+package org.backery.Model.Entities;
 
+import lombok.Data;
+import lombok.Setter;
+
+@Data
+@Setter
 public class Usuario {
     int id;
     String nombre;
@@ -10,12 +15,15 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String usuario, String contrasena) {
+    public Usuario(String nombre, String correo, String usuario, String contrasena) {
+        this.nombre = nombre;
+        this.correo = correo;
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
-    public Usuario(String nombre, String correo, String usuario, String contrasena) {
+    public Usuario(int id, String nombre, String correo, String usuario, String contrasena) {
+        this.id = id;
         this.nombre = nombre;
         this.correo = correo;
         this.usuario = usuario;

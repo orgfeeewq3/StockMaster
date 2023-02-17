@@ -1,4 +1,4 @@
-package org.backery.Entities;
+package org.backery.Model.Entities;
 
 public class Almacen {
     int id;
