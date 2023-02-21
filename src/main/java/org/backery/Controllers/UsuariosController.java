@@ -1,6 +1,6 @@
 package org.backery.Controllers;
 
-import org.backery.Entities.Usuario;
+import org.backery.Model.Entities.Usuario;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //import static org.example.Main.prodControl;
+
 @RestController
 public class UsuariosController {
     Usuario usuario = new Usuario();
@@ -29,10 +30,10 @@ public class UsuariosController {
     @GetMapping(value = "/wellcome") //ruta http://localhost:9090/wellcome
     public Usuario sayHello(){
 
-        usuario.setNombre("moises");
-        usuario.setUsuario("alx7770i535");
-        usuario.setCorreo("alx7770i535@gamil.com");
-        usuario.setContrasena("1234abc");
+        usuario.setName("moises");
+        usuario.setUsername("alx7770i535");
+        usuario.setEmail("alx7770i535@gamil.com");
+        usuario.setPassword("1234abc");
 //        return "hello world!";
         return usuario;
     }
@@ -42,7 +43,7 @@ public class UsuariosController {
 
     public void register(String nombre, String correo, String usuario, String contrasena) {
         for (Usuario u : listaUsuarios) {
-            if (u.getUsuario().equals(usuario)) {
+            if (u.getUsername().equals(usuario)) {
                 System.out.println("El usuario ya existe");
                 return;
             }
@@ -53,8 +54,8 @@ public class UsuariosController {
 
     public void login(String usuario, String contrasena) {
         for (Usuario u : listaUsuarios) {
-            if (u.getUsuario().equals(usuario) && u.getContrasena().equals(contrasena)) {
-                System.out.println("Bienvenido " + u.getNombre());
+            if (u.getUsername().equals(usuario) && u.getPassword().equals(contrasena)) {
+                System.out.println("Bienvenido " + u.getName());
 
                 prodControl();
 
