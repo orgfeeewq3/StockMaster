@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "89d5b374-150e-44a3-a028-e84b4867d5c5",
+		"name": "StockMaster",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25904438"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "identifier",
+									"value": "moises@email.com",
+									"type": "text"
+								},
+								{
+									"key": "identifier",
+									"value": "moi123",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9090/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"auth",
+								"signin"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "moi12",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "moises",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "moi122",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "moi2sxfxsdfdqw@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345aA$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9090/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"auth",
+								"signup"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "q",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "mois12wfgr",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "mworisfg1@email.com",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/wellcome",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"wellcome"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
