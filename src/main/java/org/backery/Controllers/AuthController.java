@@ -77,8 +77,8 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
                 throw new Exception("Hay errores: " + errors);
             }
 
-//            if(signUpDTO.getUsername().isEmpty()
-//                    || signUpDTO.getPassword().isEmpty()
+//            if(signUpDTO.getUsername().isEmpty()          //Se verifica que los campos no esten vacios
+//                    || signUpDTO.getPassword().isEmpty()  //en caso de no usar @validation de jakarta
 //                    || signUpDTO.getEmail().isEmpty()
 //                    || signUpDTO.getName().isEmpty()
 //            )
