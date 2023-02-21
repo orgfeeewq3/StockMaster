@@ -41,11 +41,8 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
         try {
             if(result.hasErrors()) {
                 String errors = result.getAllErrors().toString();
-                throw new Exception("Hay errores en el formulario" + errors);
+                throw new Exception("Hay errores: " + errors);
             }
-
-//            if (signInDTO.getIdentifier() == null || signInDTO.getPassword() == null)
-//                throw new Exception("No se puede dejar vacio el usuario o la contrasena");
 
             if(!userService.existsByIdentifier(signInDTO.getIdentifier()))  //Se verifica que el usuario exista
                 throw new Exception("Este usuario no existe");
@@ -77,12 +74,6 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
                 throw new Exception("Hay errores: " + errors);
             }
 
-//            if(signUpDTO.getUsername().isEmpty()
-//                    || signUpDTO.getPassword().isEmpty()
-//                    || signUpDTO.getEmail().isEmpty()
-//                    || signUpDTO.getName().isEmpty()
-//            )
-//                throw new Exception("Error en los campos");
 
             Boolean userRegistered = userService.register(signUpDTO);
             if (!userRegistered)
@@ -99,18 +90,6 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
         }
     }
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    public Map<String, String> handleValidationExceptions(
-//            MethodArgumentNotValidException ex) {
-//        Map<String, String> errors = new HashMap<>();
-//        ex.getBindingResult().getAllErrors().forEach((error) -> {
-//            String fieldName = ((FieldError) error).getField();
-//            String errorMessage = error.getDefaultMessage();
-//            errors.put(fieldName, errorMessage);
-//        });
-//        return errors;
-//    }
 }
 
 
