@@ -10,16 +10,14 @@ import lombok.Getter;
 @Data
 @Getter
 @AllArgsConstructor
-public class LoginDTO {
-    @NotNull(message = "El identificador no puede ser nulo")
-    @NotEmpty(message = "El identificador no puede ser vacio")
-    @NotBlank(message = "El identificador no puede ser en blanco")
+public class SignInDTO {
+    @NotBlank(message = "user identifier is mandatory")
     private String identifier;
 
-    @NotBlank
+    @NotBlank(message = "user password is mandatory")
     private String password;
 
-    public LoginDTO() {
+    public SignInDTO() {
         super();
     }
 

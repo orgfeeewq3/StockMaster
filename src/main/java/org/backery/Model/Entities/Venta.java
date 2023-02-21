@@ -1,42 +1,17 @@
 package org.backery.Model.Entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
+@Setter
+@Getter
 @AllArgsConstructor
-public class Venta {
-    private int id;
-    private String nombre;
-    private int cantidad;
+public class Venta extends Process{
 
-    public Venta() {
-    }
-
-    public Venta( String nombre, int cantidad) {
-        this.nombre = nombre;
-        this.cantidad = cantidad;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public Venta(String nombre, int cantidad) {
+        super(nombre, cantidad);
     }
 }

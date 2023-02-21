@@ -1,15 +1,16 @@
 package org.backery.Service;
 
 import org.backery.Model.Entities.Usuario;
+import org.backery.Model.dtos.SignUpDTO;
 
 import java.util.List;
 
 public interface UserService {
-    Boolean existsByUsername(String username);
+    Usuario findOneByUsername(String username)throws Exception;
 
-    Usuario findOneByUsername(String username);
+    Boolean existsByIdentifier(String identifier) throws Exception;
 
-//    void register(UserInfo userInfo) throws Exception;
+    Boolean register(SignUpDTO singUp) throws Exception;
     Usuario findOneById(int id) throws Exception;
     List<Usuario> findAll() throws Exception;
     Usuario findOneByIdentifer(String identifier) throws Exception;

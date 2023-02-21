@@ -13,12 +13,17 @@ public class UserRepository {
         usersList.add(new Usuario(1, "moises", "moises@email.com", "moi123", "1234"));
         usersList.add(new Usuario(2, "alexi", "alexi@email.com", "alx123", "7890"));
     }
-    public Boolean existsByUsername(String username){
-        return usersList.stream().anyMatch(user -> user.getUsuario().equals(username));
+    public void insertUser(Usuario user){
+         usersList.add(user);
+    }
+    public Boolean existsByIdentifier(String identifier){ //existe un user con ese username o email?
+        return usersList.stream().anyMatch(
+                user -> user.getUsername().equals(identifier) ||
+                        user.getEmail().equals(identifier));
     }
     public List<Usuario> findAll() {
         return usersList;
-    }
+    } //SELECT * FROM users
 
     public Optional<Usuario> findById(int id) {
         return usersList.stream().filter(user -> user.getId() == id).findFirst();
@@ -27,7 +32,7 @@ public class UserRepository {
     public Usuario findOneByUsernameOrEmail(String identifier, String identifier2) {
         System.out.println("identifierRepo: " + identifier);
         Usuario userFound = usersList.stream().filter(
-                user -> user.getUsuario().equals(identifier) || user.getCorreo().equals(identifier2)).findFirst().orElse(null);
+                user -> user.getUsername().equals(identifier) || user.getEmail().equals(identifier2)).findFirst().orElse(null);
         return userFound;
     }
 }

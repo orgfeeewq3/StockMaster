@@ -1,31 +1,17 @@
 package org.backery.Model.Entities;
 
-public class Almacen {
-    int id;
-    String nombre;
-    int cantidad;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-    public Almacen() {
-    }
+@Data
+@Setter
+@Getter
+@AllArgsConstructor
+public class Almacen extends Process{
 
     public Almacen(String nombre, int cantidad) {
-        this.nombre = nombre;
-        this.cantidad = cantidad;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+        super(nombre, cantidad);
     }
 }
