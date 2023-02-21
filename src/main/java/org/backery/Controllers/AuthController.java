@@ -79,7 +79,7 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
             if (!userRegistered)
                 throw new Exception("Error al registrar el usuario");
             return new ResponseEntity<>(
-                    new MessageDTO("Usuario Registrado"+signUpDTO),
+                    new MessageDTO("Usuario Registrado"),
                     HttpStatus.CREATED
             );
         } catch (Exception e) {
