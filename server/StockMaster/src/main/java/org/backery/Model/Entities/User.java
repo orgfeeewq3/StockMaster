@@ -9,17 +9,17 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Usuario {
+public class User {
     int id;
     String name;
     String email;
     String username;
     String password;
 
-    public Usuario() {
+    public User() {
     }
 
-    public Usuario(String nombre, String correo, String usuario, String contrasena) {
+    public User(String nombre, String correo, String usuario, String contrasena) {
         this.name = nombre;
         this.email = correo;
         this.username = usuario;

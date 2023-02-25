@@ -13,7 +13,7 @@ public class MainApplication {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer() { //para que el frontend pueda hacer peticiones al backend
+    public WebMvcConfigurer corsConfigurer() { //para que el frontend7 pueda hacer peticiones al backend
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {

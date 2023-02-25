@@ -1,6 +1,6 @@
 package org.backery.Repository;
 
-import org.backery.Model.Entities.Usuario;
+import org.backery.Model.Entities.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public class UserRepository {
-    private static ArrayList<Usuario> usersList = new ArrayList<>();
+    private static ArrayList<User> usersList = new ArrayList<>();
     static {
-        usersList.add(new Usuario(1, "moises", "moises@email.com", "moi123", "1234"));
-        usersList.add(new Usuario(2, "alexi", "alexi@email.com", "alx123", "7890"));
+        usersList.add(new User(1, "moises", "moises@email.com", "moi123", "1234"));
+        usersList.add(new User(2, "alexi", "alexi@email.com", "alx123", "7890"));
     }
-    public void insertUser(Usuario user){
+    public void insertUser(User user){
          usersList.add(user);
     }
     public Boolean existsByIdentifier(String identifier){ //existe un user con ese username o email?
@@ -21,17 +21,17 @@ public class UserRepository {
                 user -> user.getUsername().equals(identifier) ||
                         user.getEmail().equals(identifier));
     }
-    public List<Usuario> findAll() {
+    public List<User> findAll() {
         return usersList;
     } //SELECT * FROM users
 
-    public Optional<Usuario> findById(int id) {
+    public Optional<User> findById(int id) {
         return usersList.stream().filter(user -> user.getId() == id).findFirst();
     }
 
-    public Usuario findOneByUsernameOrEmail(String identifier, String identifier2) {
+    public User findOneByUsernameOrEmail(String identifier, String identifier2) {
         System.out.println("identifierRepo: " + identifier);
-        Usuario userFound = usersList.stream().filter(
+        User userFound = usersList.stream().filter(
                 user -> user.getUsername().equals(identifier) || user.getEmail().equals(identifier2)).findFirst().orElse(null);
         return userFound;
     }

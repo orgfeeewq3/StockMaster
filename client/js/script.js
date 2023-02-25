@@ -16,7 +16,7 @@ let button = document.getElementById("btn-SignIn").addEventListener("click", (e)
             redirect: 'follow'
     };
 
-    fetch("http://localhost:9090/auth/signin", requestOptions)
+    fetch(SIGNIN, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error)

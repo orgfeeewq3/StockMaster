@@ -1,6 +1,6 @@
 package org.backery.Service.impl;
 
-import org.backery.Model.Entities.Usuario;
+import org.backery.Model.Entities.User;
 import org.backery.Model.dtos.SignUpDTO;
 import org.backery.Repository.UserRepository;
 import org.backery.Service.UserService;
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Usuario findOneByUsername(String username) {
+    public User findOneByUsername(String username) {
         return userRepository.findOneByUsernameOrEmail(username, username);
     }
 
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             if(exist) {
                 throw new Exception("El usuario ya existe");
             }
-            Usuario newUser = new Usuario(
+            User newUser = new User(
                     singUp.getName(),
                     singUp.getEmail(),
                     singUp.getUsername(),
@@ -53,23 +53,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Usuario findOneById(int id) throws Exception {
-        Usuario foundUser = userRepository
+    public User findOneById(int id) throws Exception {
+        User foundUser = userRepository
                 .findById(id)
                 .orElse(null);
         return foundUser;
     }
 
     @Override
-    public List<Usuario> findAll() throws Exception {
+    public List<User> findAll() throws Exception {
         return userRepository.findAll();
     }
 
     @Override
-    public Usuario findOneByIdentifer(String identifier) throws Exception {
+    public User findOneByIdentifer(String identifier) throws Exception {
         System.out.println("identifier: " + identifier);
 
-        Usuario foundUser = userRepository
+        User foundUser = userRepository
                 .findOneByUsernameOrEmail(identifier, identifier);
 
         System.out.println("foundUser: " + foundUser);
@@ -77,15 +77,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Usuario findOneByUsernameAndEmail(String username, String email) throws Exception {
-        Usuario foundUser = userRepository
+    public User findOneByUsernameAndEmail(String username, String email) throws Exception {
+        User foundUser = userRepository
                 .findOneByUsernameOrEmail(username, email);
         return foundUser;
     }
 
     @Override
-    public Boolean comparePassword(Usuario user, String passToCompare) throws Exception {
-       Usuario userFound = findOneById(user.getId());
+    public Boolean comparePassword(User user, String passToCompare) throws Exception {
+       User userFound = findOneById(user.getId());
        return userFound.getPassword().equals(passToCompare);
     }
 }

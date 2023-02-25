@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Ingreso extends Process{
+public class Input extends Process{
 
-    public Ingreso(String nombre, int cantidad) {
+    public Input(String nombre, int cantidad) {
         super(nombre, cantidad);
     }
 }

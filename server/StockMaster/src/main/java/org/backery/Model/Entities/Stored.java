@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Almacen extends Process{
+public class Stored extends Process{
 
-    public Almacen(String nombre, int cantidad) {
+    public Stored(String nombre, int cantidad) {
         super(nombre, cantidad);
     }
 }
