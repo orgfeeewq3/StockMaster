@@ -1,11 +1,8 @@
 package org.backery.Controllers;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.backery.Model.Entities.Usuario;
+import org.backery.Model.Entities.User;
 import org.backery.Model.dtos.MessageDTO;
 import org.backery.Model.dtos.SignInDTO;
 import org.backery.Model.dtos.SignUpDTO;
@@ -15,12 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Data
 @RestController
@@ -46,9 +38,9 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
 
             if(!userService.existsByIdentifier(signInDTO.getIdentifier()))  //Se verifica que el usuario exista
                 throw new Exception("Este usuario no existe");
-
-            Usuario user = userService.findOneByIdentifer(signInDTO.getIdentifier()); //Se obtiene el usuario
-
+            System.out.println("El usuario existe");
+            User user = userService.findOneByIdentifer(signInDTO.getIdentifier()); //Se obtiene el usuario
+            System.out.println("El usuario es: " + user.toString());
             if(!userService.comparePassword(user, signInDTO.getPassword()))  //Se compara la contraseña
                 throw new Exception("La contrasena no es correcta.");
 

@@ -1,0 +1,59 @@
+* {
+    border: purple 1px dotted;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    border: red 2px dotted;
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main {
+    /* backgrnud with gradient */
+    background: linear-gradient(45deg, #19fa04, #d60abb);
+    border: green 2px solid;
+    display: block;
+    width: 99vw;
+    height: 60vh;
+    margin: 3.9rem 0.1rem 3rem 0.1rem;
+}
+
+.cuadrito {
+    border: purple 2px dotted;
+    background-color: coral;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14 px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.footer {
+    float: bottom;
+    width: 100%;
+    gravity: bottom;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+aside {
+    border: blue 2px dotted; */
+    width: 100%;
+    height: 100%;
+}
+section {
+    border: red 2px solid;
+    width: 100%;
+    height: 100%;
+}

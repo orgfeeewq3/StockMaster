@@ -1,6 +1,6 @@
 package org.backery.Service.impl;
 
-import org.backery.Model.Entities.Usuario;
+import org.backery.Model.Entities.User;
 import org.backery.Model.dtos.SignUpDTO;
 import org.backery.Repository.UserRepository;
 import org.backery.Service.UserService;
@@ -15,12 +15,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean existsByIdentifier(String identifier) {
-        return userRepository.existsByIdentifier(identifier);
+//        System.out.println("existsByIdentifier: " + identifier);
+//        System.out.println("existsByIdentifier,repo: " + userRepository.existsByUsernameOrEmail(identifier,identifier));
+        return userRepository.existsByUsernameOrEmail(identifier,identifier); //.existsByIdentifier(identifier);
     }
 
     @Override
-    public Usuario findOneByUsername(String username) {
-        return userRepository.findOneByUsernameOrEmail(username, username);
+    public User findOneByUsername(String username) {
+        return userRepository.findByUsername(username);  //.findOneByUsernameOrEmail(username, username);
     }
 
     @Override
@@ -31,15 +33,15 @@ public class UserServiceImpl implements UserService {
             if(exist) {
                 throw new Exception("El usuario ya existe");
             }
-            Usuario newUser = new Usuario(
+            User newUser = new User(
                     singUp.getName(),
                     singUp.getEmail(),
                     singUp.getUsername(),
                     singUp.getPassword()
             );
-            userRepository.insertUser(newUser);
+            userRepository.save(newUser);  //.insertUser(newUser);
 
-            exist = userRepository.existsByIdentifier(newUser.getUsername());
+            exist = existsByIdentifier(newUser.getUsername());  //.existsByIdentifier(newUser.getUsername());
             if (exist) {
                 return true;
             } else {
@@ -53,39 +55,45 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Usuario findOneById(int id) throws Exception {
-        Usuario foundUser = userRepository
+    public User findOneById(int id) throws Exception {
+        User foundUser = userRepository
                 .findById(id)
                 .orElse(null);
         return foundUser;
     }
 
     @Override
-    public List<Usuario> findAll() throws Exception {
+    public List<User> findAll() throws Exception {
         return userRepository.findAll();
     }
 
     @Override
-    public Usuario findOneByIdentifer(String identifier) throws Exception {
-        System.out.println("identifier: " + identifier);
+    public User findOneByIdentifer(String identifier) throws Exception {
+//        System.out.println("identifier: " + identifier);
 
-        Usuario foundUser = userRepository
-                .findOneByUsernameOrEmail(identifier, identifier);
+        User foundUser = userRepository
+                .findByUsernameOrEmail(identifier,identifier);
 
-        System.out.println("foundUser: " + foundUser);
+        System.out.println("foundUserepo: " + foundUser);
+
+//        if(foundUser == null) {
+//            foundUser = userRepository
+//                    .findByEmail(identifier);
+//        }
+//        System.out.println("foundUserepo: " + foundUser);
         return foundUser;
     }
 
     @Override
-    public Usuario findOneByUsernameAndEmail(String username, String email) throws Exception {
-        Usuario foundUser = userRepository
-                .findOneByUsernameOrEmail(username, email);
+    public User findOneByUsernameAndEmail(String username, String email) throws Exception {
+        User foundUser = userRepository
+                .findByUsernameOrEmail(username, email);
         return foundUser;
     }
 
     @Override
-    public Boolean comparePassword(Usuario user, String passToCompare) throws Exception {
-       Usuario userFound = findOneById(user.getId());
+    public Boolean comparePassword(User user, String passToCompare) throws Exception {
+       User userFound = findOneById(user.getId());
        return userFound.getPassword().equals(passToCompare);
     }
 }

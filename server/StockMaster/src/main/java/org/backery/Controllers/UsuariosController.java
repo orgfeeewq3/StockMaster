@@ -1,6 +1,6 @@
 package org.backery.Controllers;
 
-import org.backery.Model.Entities.Usuario;
+import org.backery.Model.Entities.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 @RestController
 public class UsuariosController {
-    Usuario usuario = new Usuario();
-    ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+    User user = new User();
+    ArrayList<User> listaUsers = new ArrayList<>();
     public Usuarios usuarios = new Usuarios();
     /*public void dispatch_revisar() {
         boolean revisar_usuario = usuarios.list_usuario.contains(usuarios.usuario), revisar_contra = usuarios.list_contrasena.contains(usuarios.contraseña);
@@ -28,32 +28,32 @@ public class UsuariosController {
         }
     }*/
     @GetMapping(value = "/wellcome") //ruta http://localhost:9090/wellcome
-    public Usuario sayHello(){
+    public User sayHello(){
 
-        usuario.setName("moises");
-        usuario.setUsername("alx7770i535");
-        usuario.setEmail("alx7770i535@gamil.com");
-        usuario.setPassword("1234abc");
+        user.setName("moises");
+        user.setUsername("alx7770i535");
+        user.setEmail("alx7770i535@gamil.com");
+        user.setPassword("1234abc");
 //        return "hello world!";
-        return usuario;
+        return user;
     }
     public void dispatch_login() {
         usuarios.login();
     }
 
     public void register(String nombre, String correo, String usuario, String contrasena) {
-        for (Usuario u : listaUsuarios) {
+        for (User u : listaUsers) {
             if (u.getUsername().equals(usuario)) {
                 System.out.println("El usuario ya existe");
                 return;
             }
         }
-        listaUsuarios.add(new Usuario(nombre, correo, usuario, contrasena));
+        listaUsers.add(new User(nombre, correo, usuario, contrasena));
         System.out.println("Usuario registrado");
     }
 
     public void login(String usuario, String contrasena) {
-        for (Usuario u : listaUsuarios) {
+        for (User u : listaUsers) {
             if (u.getUsername().equals(usuario) && u.getPassword().equals(contrasena)) {
                 System.out.println("Bienvenido " + u.getName());
 
