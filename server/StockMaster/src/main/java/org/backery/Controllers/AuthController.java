@@ -38,9 +38,9 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
 
             if(!userService.existsByIdentifier(signInDTO.getIdentifier()))  //Se verifica que el usuario exista
                 throw new Exception("Este usuario no existe");
-
+            System.out.println("El usuario existe");
             User user = userService.findOneByIdentifer(signInDTO.getIdentifier()); //Se obtiene el usuario
-
+            System.out.println("El usuario es: " + user.toString());
             if(!userService.comparePassword(user, signInDTO.getPassword()))  //Se compara la contraseña
                 throw new Exception("La contrasena no es correcta.");
 

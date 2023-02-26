@@ -15,12 +15,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean existsByIdentifier(String identifier) {
-        return userRepository.existsByIdentifier(identifier);
+//        System.out.println("existsByIdentifier: " + identifier);
+//        System.out.println("existsByIdentifier,repo: " + userRepository.existsByUsernameOrEmail(identifier,identifier));
+        return userRepository.existsByUsernameOrEmail(identifier,identifier); //.existsByIdentifier(identifier);
     }
 
     @Override
     public User findOneByUsername(String username) {
-        return userRepository.findOneByUsernameOrEmail(username, username);
+        return userRepository.findByUsername(username);  //.findOneByUsernameOrEmail(username, username);
     }
 
     @Override
@@ -37,9 +39,9 @@ public class UserServiceImpl implements UserService {
                     singUp.getUsername(),
                     singUp.getPassword()
             );
-            userRepository.insertUser(newUser);
+            userRepository.save(newUser);  //.insertUser(newUser);
 
-            exist = userRepository.existsByIdentifier(newUser.getUsername());
+            exist = existsByIdentifier(newUser.getUsername());  //.existsByIdentifier(newUser.getUsername());
             if (exist) {
                 return true;
             } else {
@@ -67,19 +69,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findOneByIdentifer(String identifier) throws Exception {
-        System.out.println("identifier: " + identifier);
+//        System.out.println("identifier: " + identifier);
 
         User foundUser = userRepository
-                .findOneByUsernameOrEmail(identifier, identifier);
+                .findByUsernameOrEmail(identifier,identifier);
 
-        System.out.println("foundUser: " + foundUser);
+        System.out.println("foundUserepo: " + foundUser);
+
+//        if(foundUser == null) {
+//            foundUser = userRepository
+//                    .findByEmail(identifier);
+//        }
+//        System.out.println("foundUserepo: " + foundUser);
         return foundUser;
     }
 
     @Override
     public User findOneByUsernameAndEmail(String username, String email) throws Exception {
         User foundUser = userRepository
-                .findOneByUsernameOrEmail(username, email);
+                .findByUsernameOrEmail(username, email);
         return foundUser;
     }
 

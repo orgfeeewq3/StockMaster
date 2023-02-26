@@ -1,28 +1,56 @@
 package org.backery.Model.Entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "\"user\"")
 public class User {
-    int id;
-    String name;
-    String email;
-    String username;
-    String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
-    public User() {
-    }
+    @NotNull
+    @Column(name = "name", nullable = false, length = Integer.MAX_VALUE)
+    private String name;
 
-    public User(String nombre, String correo, String usuario, String contrasena) {
-        this.name = nombre;
-        this.email = correo;
-        this.username = usuario;
-        this.password = contrasena;
+    @NotNull
+    @Column(name = "username", nullable = false, length = Integer.MAX_VALUE)
+    private String username;
+
+    @NotNull
+    @Column(name = "email", nullable = false, length = Integer.MAX_VALUE)
+    private String email;
+
+    @NotNull
+    @Column(name = "password", nullable = false, length = Integer.MAX_VALUE)
+    private String password;
+
+    @Column(name = "isadmin")
+    private Boolean isadmin;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<UserXproccess> userXproccesses = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Detail> details = new LinkedHashSet<>();
+
+    public User(String name, String email, String username, String password) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
 }
