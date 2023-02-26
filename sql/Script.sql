@@ -159,3 +159,47 @@ ALTER TABLE public."Detail" ADD CONSTRAINT detail_output_fk FOREIGN KEY (id_outp
 ALTER TABLE public."Detail" ADD CONSTRAINT detail_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE public."Detail" ADD CONSTRAINT detail_userxproccess_fk FOREIGN KEY (id_userxproccess) REFERENCES public."UserXproccess"(id) ON DELETE CASCADE ON UPDATE CASCADE;
 
+
+
+ALTER TABLE public."Detail" RENAME TO detail;
+ALTER TABLE public."Input" RENAME TO "input";
+ALTER TABLE public."Output" RENAME TO "output";
+ALTER TABLE public."Product"  RENAME TO product;
+ALTER TABLE public."Provider" RENAME TO provider;
+ALTER TABLE public."Stored" RENAME TO "stored";
+ALTER TABLE public."User" RENAME TO "user";
+ALTER TABLE public."UserXproccess" RENAME TO userxproccess;
+
+
+INSERT INTO public."user"
+("name", username, email, "password", isadmin)
+VALUES('moises', 'moi123', 'moises@email.com', '1234', false);
+
+INSERT INTO public.provider
+("name", email)
+VALUES('naturas', 'naturas@email.com');
+
+INSERT INTO public.product
+("name", id_provider)
+VALUES('tomatoes', 1);
+
+
+INSERT INTO public."stored"
+("name", id_product)
+VALUES('ewee', 1);
+
+INSERT INTO public."input"
+("name", id_stored)
+VALUES('dfd', 1);
+
+INSERT INTO public.detail
+("name", id_input, id_output, id_userxproccess, id_user)
+VALUES('sddff', 0, 0, 0, 0);
+
+INSERT INTO public.userxproccess
+("name", id_user, id_input, id_output)
+VALUES('sdf', 1, 0, 0);
+
+INSERT INTO public.detail
+("name", id_input, id_output, id_userxproccess, id_user)
+VALUES('sddff', 0, 0, 0, 0);
