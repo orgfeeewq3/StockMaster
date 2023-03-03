@@ -1,6 +1,8 @@
 create database StockMaster;
 
 -- DROP SCHEMA public;
+select now () :: timestamp;
+show timezone;
 
 CREATE SCHEMA public AUTHORIZATION pg_database_owner;
 
@@ -10,13 +12,14 @@ CREATE SCHEMA public AUTHORIZATION pg_database_owner;
 
 -- DROP TABLE public."Provider";
 
-CREATE TABLE public."Provider" (
+CREATE TABLE public."provider" (
 	id_prov int4 NOT NULL DEFAULT nextval('"Provider_id_seq"'::regclass),
 	"name" varchar NOT NULL,
 	email varchar NOT NULL,
 	CONSTRAINT provider_pk PRIMARY KEY (id_prov)
 );
 
+ALTER TABLE public.provider ADD telephone varchar NULL;
 
 
 -- public."Product" definition
@@ -25,7 +28,7 @@ CREATE TABLE public."Provider" (
 
 -- DROP TABLE public."Product";
 
-CREATE TABLE public."Product" (
+CREATE TABLE public."product" (
 	id serial4 NOT NULL,
 	"name" varchar NULL,
 	id_provider int4 NULL,
@@ -35,7 +38,9 @@ CREATE TABLE public."Product" (
 
 -- public."Product" foreign keys
 
-ALTER TABLE public."Product" ADD CONSTRAINT product_fk FOREIGN KEY (id_provider) REFERENCES public."Provider"(id_prov);
+ALTER TABLE public."product" ADD CONSTRAINT product_fk FOREIGN KEY (id_provider) REFERENCES public."Provider"(id_prov);
+ALTER TABLE public."product" ADD description varchar NULL;
+ALTER TABLE public."product" ADD imageurl varchar NULL;
 
 
 -- public."Stored" definition
@@ -44,7 +49,7 @@ ALTER TABLE public."Product" ADD CONSTRAINT product_fk FOREIGN KEY (id_provider)
 
 -- DROP TABLE public."Stored";
 
-CREATE TABLE public."Stored" (
+CREATE TABLE public."stored" (
 	id serial4 NOT NULL,
 	"name" varchar NOT NULL,
 	id_product int4 NULL,
@@ -54,8 +59,9 @@ CREATE TABLE public."Stored" (
 
 -- public."Stored" foreign keys
 
-ALTER TABLE public."Stored" ADD CONSTRAINT stored_fk FOREIGN KEY (id_product) REFERENCES public."Product"(id);
-
+ALTER TABLE public."stored" ADD CONSTRAINT stored_fk FOREIGN KEY (id_product) REFERENCES public."Product"(id);
+ALTER TABLE public."stored" ADD available int4 NULL;
+ALTER TABLE public."stored" ADD updated date NULL;
 
 -- public."Input" definition
 
@@ -63,7 +69,7 @@ ALTER TABLE public."Stored" ADD CONSTRAINT stored_fk FOREIGN KEY (id_product) RE
 
 -- DROP TABLE public."Input";
 
-CREATE TABLE public."Input" (
+CREATE TABLE public."input" (
 	id serial4 NOT NULL,
 	"name" varchar NULL,
 	id_stored int4 NULL,
@@ -73,7 +79,9 @@ CREATE TABLE public."Input" (
 
 -- public."Input" foreign keys
 
-ALTER TABLE public."Input" ADD CONSTRAINT input_storeed_fk FOREIGN KEY (id_stored) REFERENCES public."Stored"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."input" ADD CONSTRAINT input_storeed_fk FOREIGN KEY (id_stored) REFERENCES public."Stored"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."input" ADD amount int4 NULL;
+ALTER TABLE public."input" ADD updated date NULL;
 
 
 -- public."Output" definition
@@ -82,7 +90,7 @@ ALTER TABLE public."Input" ADD CONSTRAINT input_storeed_fk FOREIGN KEY (id_store
 
 -- DROP TABLE public."Output";
 
-CREATE TABLE public."Output" (
+CREATE TABLE public."output" (
 	id serial4 NOT NULL,
 	"name" varchar NOT NULL,
 	id_stored int4 NULL,
@@ -92,14 +100,25 @@ CREATE TABLE public."Output" (
 
 -- public."Output" foreign keys
 
-ALTER TABLE public."Output" ADD CONSTRAINT output_fk FOREIGN KEY (id_stored) REFERENCES public."Stored"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-
+ALTER TABLE public."output" ADD CONSTRAINT output_fk FOREIGN KEY (id_stored) REFERENCES public."Stored"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."output" ADD amount int4 NULL;
+ALTER TABLE public."output" ADD updated date NULL;
 
 -- public."User" definition
 
 -- Drop table
 
 -- DROP TABLE public."User";
+
+CREATE TABLE public."token" (
+	id serial4 NOT NULL,
+	"content" varchar NULL,
+	"active" boolean NULL,
+	"timestamp" timestamp null,
+	id_user int4 NULL,
+	CONSTRAINT token_pk PRIMARY KEY (id),
+	CONSTRAINT token_user_fk FOREIGN KEY (id_user) REFERENCES public."user"(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
 CREATE TABLE public."User" (
 	id int4 NOT NULL DEFAULT nextval('"Usuarios_id_seq"'::regclass),
@@ -118,7 +137,7 @@ CREATE TABLE public."User" (
 
 -- DROP TABLE public."UserXproccess";
 
-CREATE TABLE public."UserXproccess" (
+CREATE TABLE public."userxproccess" (
 	id serial4 NOT NULL,
 	"name" varchar NOT NULL,
 	id_user int4 NULL,
@@ -130,10 +149,11 @@ CREATE TABLE public."UserXproccess" (
 
 -- public."UserXproccess" foreign keys
 
-ALTER TABLE public."UserXproccess" ADD CONSTRAINT userxproccess_input_fk FOREIGN KEY (id_input) REFERENCES public."Input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."UserXproccess" ADD CONSTRAINT userxproccess_output_fk FOREIGN KEY (id_output) REFERENCES public."Output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."UserXproccess" ADD CONSTRAINT userxproccess_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-
+ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_input_fk FOREIGN KEY (id_input) REFERENCES public."Input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_output_fk FOREIGN KEY (id_output) REFERENCES public."Output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."userxproccess" ADD description varchar NULL;
+--ALTER TABLE public."input" ADD updated date NULL;
 
 -- public."Detail" definition
 
@@ -141,7 +161,7 @@ ALTER TABLE public."UserXproccess" ADD CONSTRAINT userxproccess_user_fk FOREIGN 
 
 -- DROP TABLE public."Detail";
 
-CREATE TABLE public."Detail" (
+CREATE TABLE public."detail" (
 	id serial4 NOT NULL,
 	"name" varchar NOT NULL,
 	id_input int4 NULL,
@@ -154,21 +174,22 @@ CREATE TABLE public."Detail" (
 
 -- public."Detail" foreign keys
 
-ALTER TABLE public."Detail" ADD CONSTRAINT detail_input_fk FOREIGN KEY (id_input) REFERENCES public."Input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."Detail" ADD CONSTRAINT detail_output_fk FOREIGN KEY (id_output) REFERENCES public."Output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."Detail" ADD CONSTRAINT detail_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."Detail" ADD CONSTRAINT detail_userxproccess_fk FOREIGN KEY (id_userxproccess) REFERENCES public."UserXproccess"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_input_fk FOREIGN KEY (id_input) REFERENCES public."Input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_output_fk FOREIGN KEY (id_output) REFERENCES public."Output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_userxproccess_fk FOREIGN KEY (id_userxproccess) REFERENCES public."UserXproccess"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD description varchar NULL;
 
 
 
-ALTER TABLE public."Detail" RENAME TO detail;
-ALTER TABLE public."Input" RENAME TO "input";
-ALTER TABLE public."Output" RENAME TO "output";
-ALTER TABLE public."Product"  RENAME TO product;
-ALTER TABLE public."Provider" RENAME TO provider;
-ALTER TABLE public."Stored" RENAME TO "stored";
-ALTER TABLE public."User" RENAME TO "user";
-ALTER TABLE public."UserXproccess" RENAME TO userxproccess;
+--ALTER TABLE public."Detail" RENAME TO detail;
+--ALTER TABLE public."Input" RENAME TO "input";
+--ALTER TABLE public."Output" RENAME TO "output";
+--ALTER TABLE public."Product"  RENAME TO product;
+--ALTER TABLE public."Provider" RENAME TO provider;
+--ALTER TABLE public."Stored" RENAME TO "stored";
+--ALTER TABLE public."User" RENAME TO "user";
+--ALTER TABLE public."UserXproccess" RENAME TO userxproccess;
 
 
 INSERT INTO public."user"
