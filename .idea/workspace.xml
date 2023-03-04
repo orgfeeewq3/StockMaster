@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="929753cb-93df-49ed-82f9-2122d0ca9bca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Provider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/dtos/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Controllers/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Controllers/ProductoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Stored.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Stored_Old.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="com.haulmont.jpb.JpaEntity" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2MW7WrkXGyrolL14v3Qe5Hj5y33" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "617fbbbc2cd65c66a2f97f32cfa7a0a0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="StockMaster" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.backery.MainApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="929753cb-93df-49ed-82f9-2122d0ca9bca" name="Changes" comment="" />
+      <created>1677871523545</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677871523545</updated>
+      <workItem from="1677871525502" duration="4658000" />
+      <workItem from="1677941506622" duration="1530000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
