@@ -1,6 +1,7 @@
 package org.backery.Service.impl;
 
 import org.backery.Model.Entities.User;
+import org.backery.Model.dtos.SignInDTO;
 import org.backery.Model.dtos.SignUpDTO;
 import org.backery.Repository.UserRepository;
 import org.backery.Service.UserService;
@@ -14,9 +15,22 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public Boolean existsByIdentifier(String identifier) {
+    public Boolean existsByIdentifier(String identifier) throws Exception{
         return userRepository.existsByUsernameOrEmail(identifier,identifier);
     }
+
+    @Override
+    public Boolean login(SignInDTO signIn) throws Exception {
+        if(!existsByIdentifier(signIn.getIdentifier()))  //Se verifica que el usuario exista
+            throw new Exception("Este usuario no existe");
+        System.out.println("El usuario existe");
+        User user = findOneByIdentifer(signIn.getIdentifier()); //Se obtiene el usuario
+        System.out.println("El usuario es: " + user.toString());
+        if(!comparePassword(user, signIn.getPassword()))  //Se compara la contraseña
+            throw new Exception("La contrasena no es correcta.");
+        else return true;
+    }
+
     @Override
     public User findOneByUsername(String username) {
         return userRepository.findByUsername(username);
@@ -36,6 +50,7 @@ public class UserServiceImpl implements UserService {
                     singUp.getUsername(),
                     singUp.getPassword()
             );
+            newUser.setIsadmin(false); //Se establece que el usuario no es administrador por defecto
             userRepository.save(newUser);  //.insertUser(newUser);
 
             exist = existsByIdentifier(newUser.getUsername());  //.existsByIdentifier(newUser.getUsername());
@@ -53,10 +68,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findOneById(int id) throws Exception {
-        User foundUser = userRepository
+        return userRepository
                 .findById(id)
                 .orElse(null);
-        return foundUser;
     }
 
     @Override
