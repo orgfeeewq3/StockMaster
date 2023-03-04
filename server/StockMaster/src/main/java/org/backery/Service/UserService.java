@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface UserService {
     User findOneByUsername(String username)throws Exception;
-
     Boolean existsByIdentifier(String identifier) throws Exception;
-
     Boolean register(SignUpDTO singUp) throws Exception;
     User findOneById(int id) throws Exception;
     List<User> findAll() throws Exception;

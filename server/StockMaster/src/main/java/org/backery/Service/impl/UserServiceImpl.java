@@ -15,14 +15,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean existsByIdentifier(String identifier) {
-//        System.out.println("existsByIdentifier: " + identifier);
-//        System.out.println("existsByIdentifier,repo: " + userRepository.existsByUsernameOrEmail(identifier,identifier));
-        return userRepository.existsByUsernameOrEmail(identifier,identifier); //.existsByIdentifier(identifier);
+        return userRepository.existsByUsernameOrEmail(identifier,identifier);
     }
-
     @Override
     public User findOneByUsername(String username) {
-        return userRepository.findByUsername(username);  //.findOneByUsernameOrEmail(username, username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
