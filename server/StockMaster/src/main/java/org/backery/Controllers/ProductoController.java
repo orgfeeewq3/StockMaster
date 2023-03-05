@@ -1,11 +1,7 @@
 package org.backery.Controllers;
-import org.backery.Model.Entities.Stored_Old;
-import org.backery.Model.Entities.Input;
-import org.backery.Model.Entities.Output;
-
-import java.util.ArrayList;
 
 public class ProductoController {
+    /* COMENTANDO CONTROLLER DEBIDO A QUE POSIBLEMENTE LO DEPREQUEMOS
     Stored_Old storedOld = new Stored_Old();
     Input input = new Input();
     Output output = new Output();
@@ -79,4 +75,5 @@ public class ProductoController {
             }
         }
     }
+     */
 }

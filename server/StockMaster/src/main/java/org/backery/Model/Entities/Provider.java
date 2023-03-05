@@ -29,4 +29,6 @@ public class Provider {
     @Column(name = "telephone", length = Integer.MAX_VALUE)
     private String telephone;
 
+
+
 }

@@ -5,17 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="929753cb-93df-49ed-82f9-2122d0ca9bca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Provider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/dtos/ProductDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Stored.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/dtos/InputDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/dtos/OutputDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/dtos/StoredDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/InputRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/OutputRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/StoredRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/InputService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/OutputService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/StoredService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/impl/InputServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Service/impl/OutputServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Controllers/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Controllers/ProductoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Stored.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Stored_Old.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Model/Entities/Provider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/StockMaster/src/main/java/org/backery/Repository/ProductRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,26 +62,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "617fbbbc2cd65c66a2f97f32cfa7a0a0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;617fbbbc2cd65c66a2f97f32cfa7a0a0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MainApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="StockMaster" />
@@ -94,6 +101,7 @@
       <updated>1677871523545</updated>
       <workItem from="1677871525502" duration="4658000" />
       <workItem from="1677941506622" duration="1530000" />
+      <workItem from="1678056642129" duration="2087000" />
     </task>
     <servers />
   </component>
