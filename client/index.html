@@ -10,19 +10,26 @@
 </head>
 <body>
     <header >    <!-- header-->
-        <nav class="navbar bg-body-tertiary fixed-top">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
+        <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top p-0">
+            <div class="container-fluid d-flex">
+              <a class="navbar-brand align-self-start col-md-6 p-2" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box" viewBox="0 0 16 16">
                     <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
                 </svg>
                 <span>StockMaster</span>
               </a>
-              <a class="" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                  </svg>
-              </a>
+              <!-- <div class="align-self-end"> -->
+                <button class="btn navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDarkDropdown">
+                  <ul class="navbar-nav text-center col-12 column-gap-3 justify-content-end mx-3">
+                    <li class="nav-item dropdown"  data-bs-toggle="offcanvas" href="#offcanvasSignin" role="button" aria-controls="offcanvasExample"><span>Sign In</span></li>
+                    <li class="nav-item dropdown"  data-bs-toggle="offcanvas" href="#offcanvasSignup" role="button" aria-controls="offcanvasExample"><span>Sign Up</span></li>
+                    <li class="nav-item dropdown"><span>Something else here</span></li> 
+                  </ul>
+                </div>
+              <!-- </div> -->
             </div>
           </nav>
     </header>
@@ -39,6 +46,14 @@
 
             <aside class=" col col-sm-7 col-md-6 col-lg-5 ">
                 <div class="card p-2">
+
+                  <div class="offcanvas offcanvas-end bg-gray" tabindex="-1" id="offcanvasSignin" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header ">
+                      <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Sing In </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <!-- form -->
                     <form>
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Email address | Username</label>
@@ -53,8 +68,75 @@
                           <input type="checkbox" class="form-check-input" id="exampleCheck1">
                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button>
-                      </form> 
+                        <!-- <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button> -->
+                        <button type="submit" id="btn-SignIn" id="liveToastBtn" class="btn btn-primary">
+                          Submit
+                        </button>
+                    </form>  
+
+
+                    </div>
+                  </div>
+
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSignup" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Sing Up </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <!-- form -->
+                    <form>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Name Lastname</label>
+                        <input type="text" class="form-control" id="name">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username">
+                      </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text">We'll never share your identifier with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password">
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <!-- <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button> -->
+                        <button type="submit" id="btn-SignUp" id="liveToastBtn" class="btn btn-primary">
+                          Submit
+                        </button>
+                    </form>  
+
+
+                    </div>
+                  </div>
+                  
+                        <!--  --- toast --- -->
+                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="primary" class="bi bi-database-exclamation" viewBox="0 0 16 16">
+                            <path d="M12.096 6.223A4.92 4.92 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.493 4.493 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.525 4.525 0 0 1-.813-.927C8.5 14.992 8.252 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.552 4.552 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10c.262 0 .52-.008.774-.024a4.525 4.525 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777ZM3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4Z"/>
+                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 1 0V11a.5.5 0 0 0-.5-.5Zm0 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/>
+                          </svg>
+                          <strong class="me-auto">Message</strong>
+                          <small>1 mins ago</small>
+                          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body" id="toastito">
+                          Hello, world! This is a toast message.
+                        </div>
+                      </div>
+                    </div>
+                        
+                        
+                       
                 </div>
             </aside>
 
@@ -66,7 +148,7 @@
 
     <footer class="footer">  <!-- Footer -->
         <div class="d-block">
-            <div class=" container-fluid d-flex px-2 flex-row justify-content-between align-items-start fixed-bottom bg-body-tertiary">
+            <div class=" container-fluid d-flex px-2 flex-row justify-content-between align-items-start  bg-body-tertiary">
                 <p class="col-4 col-sm-2 col-md-5 py-2 text-muted"><span>© 2023 H. Backery, Inc.</span>
                 </p>
             
@@ -86,7 +168,7 @@
             </div>
         </div>
     </footer>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
