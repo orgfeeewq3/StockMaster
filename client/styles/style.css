@@ -58,10 +58,12 @@ section {
     height: 100%;
 }
 
-#offcanvasSignin, #offcanvasSignup{
+#offcanvasSignin, #offcanvasSignup {
       /* Add the blur effect */
   /* filter: blur(8px);
   -webkit-filter: blur(8px);
   z-index: 1090; */
-  opacity: 0.85;
+  background: rgba(255, 255, 255, 0.45);
+  /* opacity: 0.85; */
+  backdrop-filter: blur(5px);
 }

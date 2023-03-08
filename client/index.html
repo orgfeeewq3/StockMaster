@@ -47,42 +47,43 @@
             <aside class=" col col-sm-7 col-md-6 col-lg-5 ">
                 <div class="card p-2">
 
-                  <div class="offcanvas offcanvas-end bg-gray" tabindex="-1" id="offcanvasSignin" aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header ">
-                      <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Sing In </h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  
+                    <div class="offcanvas offcanvas-end bg-gray" tabindex="-1" id="offcanvasSignin" aria-labelledby="offcanvasExampleLabel">
+                      <div class="offcanvas-header ">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Sing In </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body">
+                        <!-- form -->
+                      <form>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address | Username</label>
+                            <input type="email" class="form-control" id="identifier" aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">We'll never share your identifier with anyone else.</div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password">
+                          </div>
+                          <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                          </div>
+                          <!-- <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button> -->
+                          <button type="submit" id="btn-SignIn" id="liveToastBtn" class="btn btn-primary">
+                            Submit
+                          </button>
+                      </form>  
+  
+  
+                      </div>
                     </div>
-                    <div class="offcanvas-body">
-                      <!-- form -->
-                    <form>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address | Username</label>
-                          <input type="email" class="form-control" id="identifier" aria-describedby="emailHelp">
-                          <div id="emailHelp" class="form-text">We'll never share your identifier with anyone else.</div>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="password">
-                        </div>
-                        <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <!-- <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button> -->
-                        <button type="submit" id="btn-SignIn" id="liveToastBtn" class="btn btn-primary">
-                          Submit
-                        </button>
-                    </form>  
-
-
-                    </div>
-                  </div>
-
-                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSignup" aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header">
-                      <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Sing Up </h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
+                    
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasSignup" aria-labelledby="offcanvasExampleLabel">
+                      <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel"> Sing Up </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
                     <div class="offcanvas-body">
                       <!-- form -->
                     <form>
@@ -94,28 +95,29 @@
                         <label for="exampleInputPassword1" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username">
                       </div>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                          <div id="emailHelp" class="form-text">We'll never share your identifier with anyone else.</div>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="password">
-                        </div>
-                        <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <!-- <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button> -->
-                        <button type="submit" id="btn-SignUp" id="liveToastBtn" class="btn btn-primary">
-                          Submit
-                        </button>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your identifier with anyone else.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password">
+                      </div>
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div>
+                      <!-- <button type="submit" class="btn btn-primary" id="btn-SignIn">Submit</button> -->
+                      <button type="submit" id="btn-SignUp" id="liveToastBtn" class="btn btn-primary">
+                        Submit
+                      </button>
                     </form>  
-
-
-                    </div>
+                    
+                    
                   </div>
+                </div>
+                  
                   
                         <!--  --- toast --- -->
                     <div class="toast-container position-fixed bottom-0 end-0 p-3">
