@@ -9,7 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class WebSecurityConfig {
-    @Bean
+
     SecurityFilterChain filterChain(HttpSecurity http,
                                     AuthenticationManager authManager) throws Exception{
         return http

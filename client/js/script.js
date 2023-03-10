@@ -17,7 +17,7 @@ let buttonLog = document.getElementById("btn-SignIn").addEventListener("click", 
     const API_URL = "http://147.182.242.164:8080/stockmaster/";
     const SIGNIN = API_URL + "auth/signin";
     let iden= (document.getElementById("identifier").value);
-    let pass= (document.getElementById("password").value);
+    let pass= (document.getElementById("password-signin").value);
 
     var formdata = new FormData();
     formdata.append("identifier", iden);
@@ -50,7 +50,7 @@ let buttonReg = document.getElementById("btn-SignUp").addEventListener("click", 
         let name= (document.getElementById("name").value);
         let user= (document.getElementById("username").value);
         let email= (document.getElementById("email").value);
-        let pass= (document.getElementById("password").value);
+        let pass= (document.getElementById("password-signup").value);
     
         var formdata = new FormData();
         formdata.append("name", name);

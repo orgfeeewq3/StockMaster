@@ -5,13 +5,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-html {
+/* html {
     border: red 2px dotted;
     margin: 0px;
     padding: 0px;
     width: 100vw;
     height: 100vh;
-}
+} */
 
 .main {
     /* backgrnud with gradient */
@@ -48,7 +48,7 @@ img {
 }
 
 aside {
-    border: blue 2px dotted; */
+    border: blue 2px dotted; 
     width: 100%;
     height: 100%;
 }
