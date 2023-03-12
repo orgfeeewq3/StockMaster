@@ -16,8 +16,8 @@ public interface UserService {
     User findOneByUsernameAndEmail(String username, String email) throws Exception;
     Boolean comparePassword(User user, String passToCompare) throws Exception;
 
-//    void insertToken(User user, String token) throws Exception;
-//    Boolean isTokenValid(User user, String token) throws Exception;
-//    User getUserAuthenticated() throws Exception;
+    void insertToken(User user, String token) throws Exception;
+    Boolean isTokenValid(User user, String token) throws Exception;
+    User getUserAuthenticated() throws Exception;
 
 }

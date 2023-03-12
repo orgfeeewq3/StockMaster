@@ -10,7 +10,8 @@ if (toastTrigger) {
 var span = document.getElementById("toastito");
 
 
-let buttonLog = document.getElementById("btn-SignIn").addEventListener("click", (e) => {
+let buttonLog = document.getElementById("btn-SignIn")
+                              .addEventListener("click", (e) => {
     e.preventDefault();
 
 //     const API_URL = "http://localhost:9090/";

@@ -1,18 +1,31 @@
 package org.backery.Service.impl;
 
+import jakarta.transaction.Transactional;
+import org.backery.Model.Entities.Role;
+import org.backery.Model.Entities.Token;
 import org.backery.Model.Entities.User;
 import org.backery.Model.dtos.SignInDTO;
 import org.backery.Model.dtos.SignUpDTO;
+import org.backery.Repository.TokenRepository;
 import org.backery.Repository.UserRepository;
 import org.backery.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static org.backery.Model.Entities.Role.USER;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TokenRepository tokenRepository;
+    @Autowired
+    private PasswordEncoder passEncoder;
+    private TokenMa tokenManager;
 
     @Override
     public Boolean existsByIdentifier(String identifier) throws Exception{
@@ -50,7 +63,7 @@ public class UserServiceImpl implements UserService {
                     singUp.getUsername(),
                     singUp.getPassword()
             );
-            newUser.setIsadmin(false); //Se establece que el usuario no es administrador por defecto
+            newUser.setRole(Role.USER); //Se establece que el usuario no es administrador por defecto
             userRepository.save(newUser);  //.insertUser(newUser);
 
             exist = existsByIdentifier(newUser.getUsername());  //.existsByIdentifier(newUser.getUsername());
@@ -97,14 +110,53 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findOneByUsernameAndEmail(String username, String email) throws Exception {
-        User foundUser = userRepository
+        return userRepository
                 .findByUsernameOrEmail(username, email);
-        return foundUser;
     }
 
     @Override
     public Boolean comparePassword(User user, String passToCompare) throws Exception {
-       User userFound = findOneById(user.getId());
-       return userFound.getPassword().equals(passToCompare);
+       return  passEncoder.matches(passToCompare, user.getPassword());
+    }
+
+    @Override
+    @Transactional(rollbackOn = Exception.class)
+    public void insertToken(User user, String token) throws Exception {
+        cleanTokens(user);
+
+        Token newToken = new Token(token, user);
+        tokenRepository.save(newToken);
+    }
+
+    @Override
+    @Transactional(rollbackOn = Exception.class)
+    public Boolean isTokenValid(User user, String token) throws Exception {
+        cleanTokens(user);
+
+        List<Token> tokens = tokenRepository.findByUserAndActive(user, true);
+
+        return tokens.stream()
+                .filter((userToken) -> {
+                    return userToken.getContent().equals(token) && userToken.getActive();
+                })
+                .findAny()
+                .orElse(null) != null;
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    public void cleanTokens(User user) {
+        List<Token> tokens = tokenRepository.findByUserAndActive(user, true);
+
+        tokens.forEach((userToken) -> {
+            if(!tokenManager.validateJwtToken(userToken.getContent(), user.getUsername())) {
+                userToken.setActive(false);
+                tokenRepository.save(userToken);
+            }
+        });
+    }
+
+    @Override
+    public String getUserAuth() throws Exception {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }
