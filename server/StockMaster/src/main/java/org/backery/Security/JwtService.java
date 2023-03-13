@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,8 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    public static final String SECRET_KEY = "VmYq3t6w9z$C&E)H@McQfTjWnZr4u7x!";
+//    public static final String SECRET_KEY = "VmYq3t6w9z$C&E)H@McQfTjWnZr4u7x!";
+    public static final String SECRET_KEY = "4D6251655468576D5A7133743677397A24432646294A404E635266556A586E32";
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -57,8 +59,11 @@ public class JwtService {
         return extractExpiration(token).before(new Date());
     }
 
-    private Date extractExpiration(String token) {
+    public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
+    }
+    public Date extractIssued(String token) {
+        return extractClaim(token, Claims::getIssuedAt);
     }
 
     private Claims extractAllClaims(String token) {

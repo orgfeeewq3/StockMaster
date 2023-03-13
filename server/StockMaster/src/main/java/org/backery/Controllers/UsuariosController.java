@@ -48,7 +48,13 @@ public class UsuariosController {
                 return;
             }
         }
-        listaUsers.add(new User(nombre, correo, usuario, contrasena));
+        var user = User.builder()
+                .name(nombre)
+                .email(correo)
+                .username(usuario)
+                .password(contrasena)
+                .build();
+        listaUsers.add(user);
         System.out.println("Usuario registrado");
     }
 

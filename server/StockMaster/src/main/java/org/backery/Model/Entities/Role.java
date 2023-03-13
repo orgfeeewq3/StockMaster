@@ -1,5 +1,10 @@
 package org.backery.Model.Entities;
 
+import jakarta.validation.constraints.Size;
+
 public enum Role {
-    ADMIN, USER
+    @Size(max = 255)
+    ADMIN,
+    @Size(max = 255)
+    USER
 }

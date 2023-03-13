@@ -1,9 +1,9 @@
 package org.backery.Model.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +15,9 @@ import java.util.Set;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "\"user\"")
 public class User implements UserDetails {
@@ -36,32 +39,30 @@ public class User implements UserDetails {
     private String password;
 
     @Size(max = 255)
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    //@Enumerated(EnumType.STRING)
+    private String role;
 
     @Size(max = 255)
     @Column(name = "username")
     private String username;
 
     @OneToMany(mappedBy = "idUser")
-    private Set<UserXproccess> userxproccesses = new LinkedHashSet<>();
+    @JsonIgnore
+    private Set<Userxproccess> userxproccesses = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUser")
+    @JsonIgnore
     private Set<Detail> details = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUser")
+    @JsonIgnore
     private Set<Token> tokens = new LinkedHashSet<>();
 
-    public User(String name, String email, String username, String password) {
-        this.name = name;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(role));
     }
 
     @Override
