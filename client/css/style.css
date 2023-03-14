@@ -66,4 +66,5 @@ section {
   background: rgba(255, 255, 255, 0.45);
   /* opacity: 0.85; */
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
