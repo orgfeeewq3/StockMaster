@@ -3,7 +3,6 @@ const toastLiveExample = document.getElementById('liveToast')
 if (toastTrigger) {
   toastTrigger.addEventListener('click', () => {
     const toast = new bootstrap.Toast(toastLiveExample)
-
     toast.show()
   })
 }
@@ -33,7 +32,10 @@ let buttonLog = document.getElementById("btn-SignIn")
     fetch(SIGNIN, requestOptions)
             .then(response => response.text())
             .then(result => {
-                                span.textContent = result;
+                const responsel = JSON.parse(result);
+                localStorage.setItem('content','Bearer '+responsel.content)
+
+                                span.textContent = responsel.message;
                                 const toast = new bootstrap.Toast(toastLiveExample)
                                 toast.show()
                                 console.log(result);})
