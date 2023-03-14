@@ -41,7 +41,6 @@ public class Token {
     @JsonIgnore
     private User idUser;
 
-
     public Token() {
 
     }

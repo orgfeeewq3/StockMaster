@@ -9,5 +9,5 @@ public interface StoredRepository extends JpaRepository<Stored, Integer> {
     Stored findById(int id);
     Stored findByName(String name);
     Stored findByAvailable(int available);
-    Stored existsStoredById(int id);
+    Boolean existsStoredById(int id);
 }

@@ -25,4 +25,22 @@ public class Detail {
     @JoinColumn(name = "id_user")
     private User idUser;
 
+    @Column(name = "description", length = Integer.MAX_VALUE)
+    private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_input")
+    private Input idInput;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_output")
+    private Output idOutput;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_userxproccess")
+    private Userxproccess idUserxproccess;
+
 }

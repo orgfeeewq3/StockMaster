@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.backery.Model.Entities.Product;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -32,49 +34,11 @@ public class Stored {
     @Column(name = "updated")
     private LocalDate updated;
 
-    public Stored() {
+    @OneToMany(mappedBy = "idStored")
+    private Set<Input> inputs = new LinkedHashSet<>();
 
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Product getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(Product idProduct) {
-        this.idProduct = idProduct;
-    }
-
-    public Integer getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Integer available) {
-        this.available = available;
-    }
-
-    public LocalDate getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(LocalDate updated) {
-        this.updated = updated;
-    }
+    @OneToMany(mappedBy = "idStored")
+    private Set<Output> outputs = new LinkedHashSet<>();
 
     public Stored(Integer id, String name, Product idProduct, Integer available, LocalDate updated) {
         this.id = id;

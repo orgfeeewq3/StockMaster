@@ -3,8 +3,12 @@ package org.backery.Model.Entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,41 +29,16 @@ public class Input {
     @Column(name = "updated")
     private LocalDate updated;
 
-    public Input() {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_stored")
+    private Stored idStored;
 
-    }
+    @OneToMany(mappedBy = "idInput")
+    private Set<Userxproccess> userxproccesses = new LinkedHashSet<>();
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public LocalDate getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(LocalDate updated) {
-        this.updated = updated;
-    }
+    @OneToMany(mappedBy = "idInput")
+    private Set<Detail> details = new LinkedHashSet<>();
 
     public Input(Integer id, String name, Integer amount, LocalDate updated) {
         this.id = id;

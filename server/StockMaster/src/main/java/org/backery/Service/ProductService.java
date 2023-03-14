@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> findAll();
-    Product registerProduct(ProductDTO productDTO);
+    List<Product> findAll() throws Exception;
+    String registerProduct(ProductDTO productDTO) throws Exception;
 }

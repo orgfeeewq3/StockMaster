@@ -135,7 +135,7 @@ CREATE TABLE public."User" (
 
 -- Drop table
 
--- DROP TABLE public."UserXproccess";
+--DROP TABLE public."userxproccess";
 
 CREATE TABLE public."userxproccess" (
 	id serial4 NOT NULL,
@@ -149,9 +149,9 @@ CREATE TABLE public."userxproccess" (
 
 -- public."UserXproccess" foreign keys
 
-ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_input_fk FOREIGN KEY (id_input) REFERENCES public."Input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_output_fk FOREIGN KEY (id_output) REFERENCES public."Output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_input_fk FOREIGN KEY (id_input) REFERENCES public."input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_output_fk FOREIGN KEY (id_output) REFERENCES public."output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."userxproccess" ADD CONSTRAINT userxproccess_user_fk FOREIGN KEY (id_user) REFERENCES public."user"(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE public."userxproccess" ADD description varchar NULL;
 --ALTER TABLE public."input" ADD updated date NULL;
 
@@ -159,11 +159,12 @@ ALTER TABLE public."userxproccess" ADD description varchar NULL;
 
 -- Drop table
 
--- DROP TABLE public."Detail";
+-- DROP TABLE public."detail";
 
 CREATE TABLE public."detail" (
 	id serial4 NOT NULL,
 	"name" varchar NOT NULL,
+	description varchar null,
 	id_input int4 NULL,
 	id_output int4 NULL,
 	id_userxproccess int4 NULL,
@@ -174,11 +175,11 @@ CREATE TABLE public."detail" (
 
 -- public."Detail" foreign keys
 
-ALTER TABLE public."detail" ADD CONSTRAINT detail_input_fk FOREIGN KEY (id_input) REFERENCES public."Input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."detail" ADD CONSTRAINT detail_output_fk FOREIGN KEY (id_output) REFERENCES public."Output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."detail" ADD CONSTRAINT detail_user_fk FOREIGN KEY (id_user) REFERENCES public."User"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."detail" ADD CONSTRAINT detail_userxproccess_fk FOREIGN KEY (id_userxproccess) REFERENCES public."UserXproccess"(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE public."detail" ADD description varchar NULL;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_input_fk FOREIGN KEY (id_input) REFERENCES public."input"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_output_fk FOREIGN KEY (id_output) REFERENCES public."output"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_user_fk FOREIGN KEY (id_user) REFERENCES public."user"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE public."detail" ADD CONSTRAINT detail_userxproccess_fk FOREIGN KEY (id_userxproccess) REFERENCES public."userxproccess"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
 
 
 

@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -30,5 +33,7 @@ public class Provider {
     private String telephone;
 
 
+    @OneToMany(mappedBy = "idProvider")
+    private Set<Product> products = new LinkedHashSet<>();
 
 }

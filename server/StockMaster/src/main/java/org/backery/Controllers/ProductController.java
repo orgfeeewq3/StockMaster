@@ -1,14 +1,58 @@
 package org.backery.Controllers;
 
+import jakarta.validation.Valid;
 import org.backery.Model.Entities.Stored;
 import org.backery.Model.Entities.Input;
 import org.backery.Model.Entities.Output;
-import org.backery.Model.Entities.Stored_Old;
+import org.backery.Model.dtos.MessageDTO;
+import org.backery.Model.dtos.ProductDTO;
+import org.backery.Service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+@RestController
 @RequestMapping("/product")
-public class ProductController {/*
+public class ProductController {
+    @Autowired
+    ProductService productService;
+
+    @PostMapping("/create")
+    public ResponseEntity<MessageDTO> createProduct(@Valid ProductDTO productDTO, BindingResult result) throws Exception {
+
+        if(result.hasErrors()){
+            String errors = result.getAllErrors().toString();
+            return new ResponseEntity<>(
+                    MessageDTO.builder().message("Error: "+errors).build(),
+                    HttpStatus.BAD_REQUEST
+            );
+        }
+        var response = productService.registerProduct(productDTO);
+
+        return new ResponseEntity<>(
+                MessageDTO.builder().message(response).build(),
+                HttpStatus.CREATED
+        );
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<MessageDTO> getAllProducts() throws Exception {
+        var response = productService.findAll();
+        return new ResponseEntity<>(
+                MessageDTO.builder()
+                        .message("Productos encontrados: "+response.size())
+                        .content(response.toString())
+                        .build(),
+                HttpStatus.OK
+        );
+    }
+    /*
     Stored stored = new Stored();
     Input input = new Input();
     Output output = new Output();
