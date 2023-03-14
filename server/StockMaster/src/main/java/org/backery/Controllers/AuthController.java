@@ -36,13 +36,9 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
                 throw new Exception("Hay errores: " + errors);
             }
 
-            if(!userService.existsByIdentifier(signInDTO.getIdentifier()))  //Se verifica que el usuario exista
-                throw new Exception("Este usuario no existe");
-            System.out.println("El usuario existe");
-            User user = userService.findOneByIdentifer(signInDTO.getIdentifier()); //Se obtiene el usuario
-            System.out.println("El usuario es: " + user.toString());
-            if(!userService.comparePassword(user, signInDTO.getPassword()))  //Se compara la contraseña
-                throw new Exception("La contrasena no es correcta.");
+            Boolean userLogged = userService.login(signInDTO);
+            if (!userLogged)
+                throw new Exception("Error al iniciar sesion el usuario");
 
             return new ResponseEntity<>(    //Sii todo esta bien, se retorna ok
                     new MessageDTO("Bienvenido"),
@@ -66,10 +62,10 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
                 throw new Exception("Hay errores: " + errors);
             }
 
-
             Boolean userRegistered = userService.register(signUpDTO);
             if (!userRegistered)
                 throw new Exception("Error al registrar el usuario");
+
             return new ResponseEntity<>(
                     new MessageDTO("Usuario Registrado"),
                     HttpStatus.CREATED

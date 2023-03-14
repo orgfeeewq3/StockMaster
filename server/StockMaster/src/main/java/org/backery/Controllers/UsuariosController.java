@@ -28,14 +28,14 @@ public class UsuariosController {
         }
     }*/
     @GetMapping(value = "/wellcome") //ruta http://localhost:9090/wellcome
-    public User sayHello(){
+    public String sayHello(){
 
         user.setName("moises");
         user.setUsername("alx7770i535");
         user.setEmail("alx7770i535@gamil.com");
         user.setPassword("1234abc");
-//        return "hello world!";
-        return user;
+        return "hello world!";
+//        return user;
     }
     public void dispatch_login() {
         usuarios.login();
