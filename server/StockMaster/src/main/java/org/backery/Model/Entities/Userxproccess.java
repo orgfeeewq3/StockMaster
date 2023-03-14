@@ -1,6 +1,5 @@
 package org.backery.Model.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Setter
 @Entity
 @Table(name = "userxproccess")
-public class UserXproccess {
+public class Userxproccess {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
@@ -24,7 +23,6 @@ public class UserXproccess {
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_user")
-    @JsonIgnore // This is to avoid infinite recursion
-    private User user;
+    private User idUser;
 
 }

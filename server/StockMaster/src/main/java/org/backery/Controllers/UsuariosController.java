@@ -48,7 +48,13 @@ public class UsuariosController {
                 return;
             }
         }
-        listaUsers.add(new User(nombre, correo, usuario, contrasena));
+        var user = User.builder()
+                .name(nombre)
+                .email(correo)
+                .username(usuario)
+                .password(contrasena)
+                .build();
+        listaUsers.add(user);
         System.out.println("Usuario registrado");
     }
 
@@ -68,7 +74,7 @@ public class UsuariosController {
 
     public static void prodControl(){
         Scanner scan = new Scanner(System.in);
-        ProductoController productoController = new ProductoController();
+        ProductController productoController = new ProductController();
         int opcion = 0;
         String nombre;
         int cantidad;

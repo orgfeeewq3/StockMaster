@@ -36,18 +36,18 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
                 throw new Exception("Hay errores: " + errors);
             }
 
-            Boolean userLogged = userService.login(signInDTO);
-            if (!userLogged)
+            String userLogged = userService.login(signInDTO);
+            if (userLogged == null)
                 throw new Exception("Error al iniciar sesion el usuario");
 
             return new ResponseEntity<>(    //Sii todo esta bien, se retorna ok
-                    new MessageDTO("Bienvenido"),
+                    new MessageDTO("Bienvenido", userLogged),
                     HttpStatus.OK
             );
 
         } catch (Exception e) { //Si hay un error, se retorna un error interno
             return new ResponseEntity<>(
-                    new MessageDTO(e.getMessage()),
+                    MessageDTO.builder().message("Error: "+e.getMessage()).build(),
                     HttpStatus.BAD_REQUEST
             );
         }
@@ -67,12 +67,12 @@ public class AuthController {   //TODO: la ruta es en request mapping y no en re
                 throw new Exception("Error al registrar el usuario");
 
             return new ResponseEntity<>(
-                    new MessageDTO("Usuario Registrado"),
+                    MessageDTO.builder().message("Usuario Registrado").build(),
                     HttpStatus.CREATED
             );
         } catch (Exception e) {
             return new ResponseEntity<>(
-                    new MessageDTO("Error: "+e.getMessage()),
+                    MessageDTO.builder().message("Error: "+e.getMessage()).build(),
                     HttpStatus.BAD_REQUEST
             );
         }

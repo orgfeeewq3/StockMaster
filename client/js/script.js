@@ -3,21 +3,21 @@ const toastLiveExample = document.getElementById('liveToast')
 if (toastTrigger) {
   toastTrigger.addEventListener('click', () => {
     const toast = new bootstrap.Toast(toastLiveExample)
-
     toast.show()
   })
 }
 var span = document.getElementById("toastito");
 
 
-let buttonLog = document.getElementById("btn-SignIn").addEventListener("click", (e) => {
+let buttonLog = document.getElementById("btn-SignIn")
+                              .addEventListener("click", (e) => {
     e.preventDefault();
 
 //     const API_URL = "http://localhost:9090/";
     const API_URL = "http://147.182.242.164:8080/stockmaster/";
     const SIGNIN = API_URL + "auth/signin";
     let iden= (document.getElementById("identifier").value);
-    let pass= (document.getElementById("password").value);
+    let pass= (document.getElementById("password-signin").value);
 
     var formdata = new FormData();
     formdata.append("identifier", iden);
@@ -32,7 +32,10 @@ let buttonLog = document.getElementById("btn-SignIn").addEventListener("click", 
     fetch(SIGNIN, requestOptions)
             .then(response => response.text())
             .then(result => {
-                                span.textContent = result;
+                const responsel = JSON.parse(result);
+                localStorage.setItem('content','Bearer '+responsel.content)
+
+                                span.textContent = responsel.message;
                                 const toast = new bootstrap.Toast(toastLiveExample)
                                 toast.show()
                                 console.log(result);})
@@ -50,7 +53,7 @@ let buttonReg = document.getElementById("btn-SignUp").addEventListener("click", 
         let name= (document.getElementById("name").value);
         let user= (document.getElementById("username").value);
         let email= (document.getElementById("email").value);
-        let pass= (document.getElementById("password").value);
+        let pass= (document.getElementById("password-signup").value);
     
         var formdata = new FormData();
         formdata.append("name", name);

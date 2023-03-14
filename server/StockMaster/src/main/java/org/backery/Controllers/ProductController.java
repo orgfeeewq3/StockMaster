@@ -2,10 +2,11 @@ package org.backery.Controllers;
 import org.backery.Model.Entities.Stored;
 import org.backery.Model.Entities.Input;
 import org.backery.Model.Entities.Output;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-
-public class ProductoController {
+@RequestMapping("/product")
+public class ProductController {
     Stored stored = new Stored();
     Input input = new Input();
     Output output = new Output();
