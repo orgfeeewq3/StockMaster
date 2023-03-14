@@ -1,15 +1,18 @@
 package org.backery.Model.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class MessageDTO {
 
     private String message;
+    private String content;
+
+
 //
 //    public MessageDTO() {
 //        super();

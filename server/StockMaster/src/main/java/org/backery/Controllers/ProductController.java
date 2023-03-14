@@ -1,8 +1,15 @@
 package org.backery.Controllers;
 
-public class ProductoController {
-    /* COMENTANDO CONTROLLER DEBIDO A QUE POSIBLEMENTE LO DEPREQUEMOS
-    Stored_Old storedOld = new Stored_Old();
+import org.backery.Model.Entities.Stored;
+import org.backery.Model.Entities.Input;
+import org.backery.Model.Entities.Output;
+import org.backery.Model.Entities.Stored_Old;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+@RequestMapping("/product")
+public class ProductController {/*
+    Stored stored = new Stored();
     Input input = new Input();
     Output output = new Output();
 
@@ -75,5 +82,5 @@ public class ProductoController {
             }
         }
     }
-     */
+*/
 }
