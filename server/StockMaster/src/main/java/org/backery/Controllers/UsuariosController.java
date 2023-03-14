@@ -10,7 +10,7 @@ import java.util.Scanner;
 //import static org.example.Main.prodControl;
 
 @RestController
-public class UsuariosController {
+public class UsuariosController {/*
     User user = new User();
     ArrayList<User> listaUsers = new ArrayList<>();
     public Usuarios usuarios = new Usuarios();
@@ -30,13 +30,9 @@ public class UsuariosController {
     @GetMapping(value = "/wellcome") //ruta http://localhost:9090/wellcome
     public String sayHello(){
 
-        user.setName("moises");
-        user.setUsername("alx7770i535");
-        user.setEmail("alx7770i535@gamil.com");
-        user.setPassword("1234abc");
         return "hello world!";
 //        return user;
-    }
+    }/*
     public void dispatch_login() {
         usuarios.login();
     }
@@ -128,4 +124,6 @@ public class UsuariosController {
             }
         }
     }
+
+    */
 }
